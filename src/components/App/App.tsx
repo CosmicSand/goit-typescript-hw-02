@@ -10,16 +10,17 @@ import "./App.css";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import { Image } from "./App.types";
 import { SearchingText } from "../SearchBar/SearchBar.types";
+import { ModalImage } from "../ImageCard/ImageCard.types";
 
 function App() {
   // const appId = 577372;
   // const accessKey = "MgGVu-2Aj7GbcWHyEAULVPxtWi0-9yK_brGw5GgXLKI";
   // const securityKey = "0Bi-McYmSz35ROYe7Vcwkh3cNuZnzS2E91IQZu5IUms";
 
-  const [gallery, setGallery] = useState<any[]>([]);
+  const [gallery, setGallery] = useState<Image[] | []>([]);
   const [isloading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [modalImage, setModalImage] = useState(null);
+  const [error, setError] = useState<Error | null>(null);
+  const [modalImage, setModalImage] = useState<ModalImage | null>(null);
   const [isLoadMore, setIsLoadMore] = useState(false);
   const [page, setPage] = useState(1);
   const [searchingText, setSearchingText] = useState("");
@@ -57,7 +58,7 @@ function App() {
           setIsLoadMore(false);
         }
       } catch (error) {
-        setError(error);
+        setError(error as Error | null);
         setIsLoadMore(false);
         console.log(error);
         toast.error(`Oooops! ${error.message}!`);
@@ -84,18 +85,18 @@ function App() {
 
   // ============= Фуннкції оновлення станів ===================
 
-  function backDropSetting(modalImageObj) {
+  function backDropSetting(modalImageObj: ModalImage): void {
     setModalImage(modalImageObj);
   }
 
-  function handleSearch(searchingText: SearchingText) {
+  function handleSearch(searchingText: SearchingText): void {
     setGallery([]);
     setIsLoadMore(false);
     setSearchingText(searchingText);
     setPage(1);
   }
 
-  function handleLoad() {
+  function handleLoad(): void {
     setPage(page + 1);
   }
 
