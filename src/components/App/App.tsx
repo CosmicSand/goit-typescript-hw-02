@@ -26,7 +26,7 @@ function App() {
   const [searchingText, setSearchingText] = useState("");
   const [isScroll, setIsScroll] = useState(false);
 
-  const galleryRef = useRef<HTMLElement>(null);
+  const galleryRef = useRef<HTMLUListElement>(null);
 
   window.onscroll = function scrollSetting(): void {
     if (window.scrollY > 20) {
