@@ -2,15 +2,19 @@ import ImageCard from "../ImageCard/ImageCard";
 import { forwardRef } from "react";
 import { BiSolidChevronsUp } from "react-icons/bi";
 import css from "./ImageGallery.module.css";
+import { ImageGalleryProps } from "./ImageGallery.types";
+import { Image } from "../App/App.types";
 
-const ImageGallery = forwardRef(function ImageGallery(
-  { galleryArray, isScroll, onView },
-  galleryRef
-) {
+const ImageGallery = forwardRef(function ImageGallery({
+  galleryArray,
+  isScroll,
+  onView,
+  ref,
+}: ImageGalleryProps) {
   return (
     <main>
-      <ul className={css.list} ref={galleryRef}>
-        {galleryArray.map((imgage) => (
+      <ul className={css.list} ref={ref}>
+        {galleryArray.map((imgage: Image) => (
           <li className={css.item} key={imgage.id} tabIndex={0}>
             <ImageCard image={imgage} onView={onView} />
           </li>
