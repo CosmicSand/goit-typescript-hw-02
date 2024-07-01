@@ -8,6 +8,8 @@ import ImageModal from "../ImageModal/ImageModal";
 import fetchImages from "../../gallery-api";
 import "./App.css";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
+import { Image } from "./App.types";
+import { SearchingText } from "../SearchBar/SearchBar.types";
 
 function App() {
   // const appId = 577372;
@@ -34,7 +36,7 @@ function App() {
   };
 
   useEffect(() => {
-    async function galleryBuilding(searchingText: string, page: number) {
+    async function galleryBuilding(searchingText: SearchingText, page: number) {
       try {
         if (searchingText.length === 0) return;
         setError(null);
@@ -86,7 +88,7 @@ function App() {
     setModalImage(modalImageObj);
   }
 
-  function handleSearch(searchingText) {
+  function handleSearch(searchingText: SearchingText) {
     setGallery([]);
     setIsLoadMore(false);
     setSearchingText(searchingText);

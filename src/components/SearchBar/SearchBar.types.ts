@@ -1,0 +1,1 @@
+export type SearchingText = string;
