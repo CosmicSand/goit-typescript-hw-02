@@ -26,7 +26,7 @@ function App() {
   const [searchingText, setSearchingText] = useState("");
   const [isScroll, setIsScroll] = useState(false);
 
-  const galleryRef = useRef();
+  const galleryRef = useRef<HTMLElement>(null);
 
   window.onscroll = function scrollSetting(): void {
     if (window.scrollY > 20) {
@@ -72,14 +72,21 @@ function App() {
   //  ================= Скрол вниз на три картки при оновленні галереї ===
 
   useEffect(() => {
-    if (galleryRef.current.children.length > 0 && page > 1) {
-      const galleryElementHeight =
-        galleryRef.current.lastChild.getBoundingClientRect().height * 3 + 45;
+    if (
+      galleryRef.current &&
+      galleryRef.current.children.length > 0 &&
+      page > 1
+    ) {
+      const lastChild = galleryRef.current.lastChild as HTMLElement;
+      if (lastChild) {
+        const galleryElementHeight =
+          lastChild.getBoundingClientRect().height * 3 + 45;
 
-      window.scrollBy({
-        top: galleryElementHeight,
-        behavior: "smooth",
-      });
+        window.scrollBy({
+          top: galleryElementHeight,
+          behavior: "smooth",
+        });
+      }
     }
   }, [gallery, page]);
 
