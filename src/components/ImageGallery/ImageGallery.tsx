@@ -14,9 +14,9 @@ const ImageGallery = forwardRef(function ImageGallery({
   return (
     <main>
       <ul className={css.list} ref={ref}>
-        {galleryArray.map((imgage: Image) => (
-          <li className={css.item} key={imgage.id} tabIndex={0}>
-            <ImageCard image={imgage} onView={onView} />
+        {galleryArray.map((image: Image) => (
+          <li className={css.item} key={image.id} tabIndex={0}>
+            <ImageCard image={image} onView={onView} />
           </li>
         ))}
       </ul>

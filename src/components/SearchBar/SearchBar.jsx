@@ -2,6 +2,7 @@ import { useId } from "react";
 import toast from "react-hot-toast";
 import { FaExclamationCircle } from "react-icons/fa";
 import css from "./SearchBar.module.css";
+// import { FormEvent } from "react";
 
 function SearchBar({ onSearch }) {
   const inpId = useId();

@@ -1,4 +1,7 @@
 import css from "./ImageCard.module.css";
+import { MouseEvent } from "react";
+import { Image } from "../App/App.types";
+import { ImageCardProp } from "./ImageCard.types";
 
 function ImageCard({
   image: {
@@ -8,10 +11,10 @@ function ImageCard({
     urls: { small, regular },
   },
   onView,
-}) {
-  function handleClick(e) {
+}: ImageCardProp) {
+  function handleClick(e: MouseEvent) {
     // if (e.target.nodeName !== "IMG") return;
-    const imageTargeted = e.target;
+    const imageTargeted = e.target as HTMLImageElement;
     const imageData = imageTargeted.dataset;
     const modalImage = {
       url: imageData.url,
