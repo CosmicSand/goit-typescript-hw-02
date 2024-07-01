@@ -58,10 +58,12 @@ function App() {
           setIsLoadMore(false);
         }
       } catch (error) {
-        setError(error as Error | null);
-        setIsLoadMore(false);
-        console.log(error);
-        toast.error(`Oooops! ${error.message}!`);
+        if (error instanceof Error) {
+          setError(error);
+          setIsLoadMore(false);
+          console.log(error);
+          toast.error(`Oooops! ${error.message}!`);
+        }
       } finally {
         setIsLoading(false);
       }
