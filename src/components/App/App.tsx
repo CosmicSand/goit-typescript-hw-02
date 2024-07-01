@@ -14,7 +14,7 @@ function App() {
   // const accessKey = "MgGVu-2Aj7GbcWHyEAULVPxtWi0-9yK_brGw5GgXLKI";
   // const securityKey = "0Bi-McYmSz35ROYe7Vcwkh3cNuZnzS2E91IQZu5IUms";
 
-  const [gallery, setGallery] = useState([]);
+  const [gallery, setGallery] = useState<any[]>([]);
   const [isloading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [modalImage, setModalImage] = useState(null);
@@ -25,7 +25,7 @@ function App() {
 
   const galleryRef = useRef();
 
-  window.onscroll = function scrollSetting() {
+  window.onscroll = function scrollSetting(): void {
     if (window.scrollY > 20) {
       setIsScroll(true);
     } else {
@@ -34,7 +34,7 @@ function App() {
   };
 
   useEffect(() => {
-    async function galleryBuilding(searchingText, page) {
+    async function galleryBuilding(searchingText: string, page: number) {
       try {
         if (searchingText.length === 0) return;
         setError(null);
@@ -45,6 +45,7 @@ function App() {
         }
         if (page > 1) {
           setGallery((prevGallery) => [...prevGallery, ...resp.results]);
+          console.log(gallery);
         } else {
           setGallery(resp.results);
         }
