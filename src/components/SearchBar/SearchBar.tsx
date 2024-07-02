@@ -1,15 +1,20 @@
-import { useId } from "react";
+import { FormEvent, useId } from "react";
 import toast from "react-hot-toast";
 import { FaExclamationCircle } from "react-icons/fa";
 import css from "./SearchBar.module.css";
+import { SearchBarProp } from "./SearchBar.types";
 // import { FormEvent } from "react";
 
-function SearchBar({ onSearch }) {
+function SearchBar({ onSearch }: SearchBarProp) {
   const inpId = useId();
 
-  function handleSubmit(e) {
+  function handleSubmit(e: FormEvent) {
     e.preventDefault();
     const form = e.target;
+    const target = e.target as typeof e.target & {
+      email: { value: string };
+      password: { value: string };
+    };
     const searchingText = form.elements.search.value.toLowerCase();
     if (searchingText.trim().length === 0) {
       toast("Oh, no! You didn't type any letter!", {
