@@ -1,6 +1,7 @@
+import { ReactElement } from "react";
 import { Grid } from "react-loader-spinner";
 
-function Loader() {
+function Loader(): ReactElement {
   return (
     <Grid
       visible={true}
