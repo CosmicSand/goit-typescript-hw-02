@@ -1,7 +1,8 @@
+import { LoadMoreBtnProp } from "./LoadMoreBtn.types";
 import css from "./LoadMoreBtn.module.css";
 
-function LoadMoreBtn({ onLoad }) {
-  function handleClick() {
+function LoadMoreBtn({ onLoad }: LoadMoreBtnProp) {
+  function handleClick(): void {
     onLoad();
   }
 
