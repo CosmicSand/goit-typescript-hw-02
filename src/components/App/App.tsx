@@ -94,7 +94,7 @@ function App() {
 
   // ============= Фуннкції оновлення станів ===================
 
-  function backDropSetting(modalImageObj: ModalImage): void {
+  function backDropSetting(modalImageObj: ModalImage | null): void {
     setModalImage(modalImageObj);
   }
 
