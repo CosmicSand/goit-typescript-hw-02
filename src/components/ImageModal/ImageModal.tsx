@@ -1,11 +1,13 @@
 import Modal from "react-modal";
 import css from "./ImageModal.module.css";
 
+import { ImageModalProp } from "./ImageModal.types";
+
 function ImageModal({
   chosenImage: { url, alt, name, location, portfolio },
   onBackDrop,
   isOpen,
-}) {
+}: ImageModalProp) {
   Modal.setAppElement("#root");
   return (
     <Modal
