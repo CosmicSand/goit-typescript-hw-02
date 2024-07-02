@@ -8,9 +8,9 @@ import { FormEvent } from "react";
 function SearchBar({ onSearch }: SearchBarProp) {
   const inpId = useId();
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    const form = e.currentTarget as HTMLFormElement;
+    const form = e.target as HTMLFormElement;
     const elem = form.elements as any;
     console.log(elem);
     const inp = elem.search as HTMLInputElement;
