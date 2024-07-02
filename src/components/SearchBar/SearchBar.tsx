@@ -12,7 +12,6 @@ function SearchBar({ onSearch }: SearchBarProp) {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
     const elem = form.elements as any;
-    console.log(elem);
     const inp = elem.search as HTMLInputElement;
 
     const searchingText = inp.value.toLowerCase();
