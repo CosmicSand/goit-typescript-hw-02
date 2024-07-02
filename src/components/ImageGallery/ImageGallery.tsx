@@ -5,12 +5,10 @@ import css from "./ImageGallery.module.css";
 import { ImageGalleryProps } from "./ImageGallery.types";
 import { Image } from "../App/App.types";
 
-const ImageGallery = forwardRef(function ImageGallery({
-  galleryArray,
-  isScroll,
-  onView,
-  ref,
-}: ImageGalleryProps) {
+const ImageGallery = forwardRef(function ImageGallery(
+  { galleryArray, isScroll, onView }: ImageGalleryProps,
+  ref: React.Ref<HTMLUListElement> // Update the type of the ref parameter
+) {
   return (
     <main>
       <ul className={css.list} ref={ref}>
